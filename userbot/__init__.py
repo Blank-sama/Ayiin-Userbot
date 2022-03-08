@@ -1,13 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.d (the "License");
-# you may not use this file except in compliance with the License.
-#
-# inline credit @keselekpermen69
-# Recode by @mrismanaziz
-# t.me/SharingUserbot
-#
-""" Userbot initialization. """
 
 import logging
 import os
@@ -96,21 +86,12 @@ if CONFIG_CHECK:
 
 while 0 < 6:
     _DEVS = get(
-        "https://raw.githubusercontent.com/AyiinXd/Reforestation/master/DEVS.json"
+        "https://raw.githubusercontent.com/BontenXd/Reforestation/master/DEVS.json"
     )
     if _DEVS.status_code != 200:
         if 0 != 5:
             continue
         DEVS = [
-            1700405732,
-            1207111230,
-            883761960,
-            2130526178,
-            1700405732,
-            1700405732,
-            1607338903,
-            1883126074,
-            5259987566
         ]
         break
     DEVS = _DEVS.json()
@@ -131,7 +112,7 @@ if not BLACKLIST_CHAT:
 API_KEY = int(os.environ.get("API_KEY") or 0)
 API_HASH = str(os.environ.get("API_HASH") or None)
 
-# Userbot Session String
+# Bonten Session String
 STRING_SESSION = os.environ.get("STRING_SESSION", None)
 
 # Logging channel/group ID configuration.
@@ -151,8 +132,8 @@ CMD_HANDLER = os.environ.get("CMD_HANDLER") or "+"
 SUDO_HANDLER = os.environ.get("SUDO_HANDLER", r"$")
 
 # Support
-GROUP = os.environ.get("GROUP", "AyiinXdSupport")
-CHANNEL = os.environ.get("CHANNEL", "AyiinSupport")
+GROUP = os.environ.get("GROUP", "BontenXdSupport")
+CHANNEL = os.environ.get("CHANNEL", "BontenSupport")
 
 # Heroku Credentials for updater.
 HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
@@ -167,7 +148,7 @@ GITHUB_ACCESS_TOKEN = os.environ.get("GITHUB_ACCESS_TOKEN", None)
 
 # Custom (forked) repo URL for updater.
 UPSTREAM_REPO_URL = os.environ.get(
-    "UPSTREAM_REPO_URL", "https://github.com/AyiinXd/Ayiin-Userbot.git"
+    "UPSTREAM_REPO_URL", "https://github.com/BontenXd/Bonten-Bonten.git"
 )
 
 # Custom Name Sticker Pack
@@ -279,21 +260,21 @@ BOT_USERNAME = os.environ.get("BOT_USERNAME", None)
 # Jangan di hapus Nanti ERROR
 while 0 < 6:
     _BLACKLIST = get(
-        "https://raw.githubusercontent.com/AyiinXd/Reforestation/master/ayiinblacklist.json"
+        "https://raw.githubusercontent.com/BontenXd/Reforestation/master/Bontenblacklist.json"
     )
     if _BLACKLIST.status_code != 200:
         if 0 != 5:
             continue
-        blacklistayiin = []
+        blacklistBonten = []
         break
-    blacklistayiin = _BLACKLIST.json()
+    blacklistBonten = _BLACKLIST.json()
     break
 
 del _BLACKLIST
 
 while 0 < 6:
     _WHITELIST = get(
-        "https://raw.githubusercontent.com/AyiinXd/Reforestation/master/whitelist.json"
+        "https://raw.githubusercontent.com/BontenXd/Reforestation/master/whitelist.json"
     )
     if _WHITELIST.status_code != 200:
         if 0 != 5:
@@ -309,7 +290,7 @@ del _WHITELIST
 if STRING_SESSION:
     session = StringSession(str(STRING_SESSION))
 else:
-    session = "AyiinUserBot"
+    session = "BontenBonten"
 try:
     bot = TelegramClient(
         session=session,
@@ -336,7 +317,7 @@ async def check_botlog_chatid() -> None:
 async def update_restart_msg(chat_id, msg_id):
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (
-        f"**⍟ Ayiin-Userbot v{BOT_VER} is back up and running!**\n\n"
+        f"**⍟ Bonten-Bonten v{BOT_VER} is back up and running!**\n\n"
         f"**⍟ Telethon:** {version.__version__}\n"
         f"**⍟ Python:** {python_version()}\n"
         f"**⍟ User:** {DEFAULTUSER}"
@@ -346,7 +327,7 @@ async def update_restart_msg(chat_id, msg_id):
 
 
 try:
-    from userbot.modules.sql_helper.globals import delgvar, gvarstatus
+    from Bonten.modules.sql_helper.globals import delgvar, gvarstatus
 
     chat_id, msg_id = gvarstatus("restartstatus").split("\n")
     with bot:
@@ -427,9 +408,9 @@ def ibuild_keyboard(buttons):
 
 with bot:
     try:
-        from userbot.modules.sql_helper.bot_blacklists import check_is_black_list
-        from userbot.modules.sql_helper.bot_pms_sql import add_user_to_db, get_user_id
-        from userbot.utils import reply_id
+        from Bonten.modules.sql_helper.bot_blacklists import check_is_black_list
+        from Bonten.modules.sql_helper.bot_pms_sql import add_user_to_db, get_user_id
+        from Bonten.utils import reply_id
 
         dugmeler = CMD_HELP
         user = bot.get_me()
@@ -519,7 +500,7 @@ with bot:
             result = None
             query = event.text
             if event.query.user_id == uid and query.startswith(
-                    "@AyiinXdSupport"):
+                    "@BontenXdSupport"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = builder.photo(
                     file=logoman,
@@ -530,22 +511,22 @@ with bot:
             elif query.startswith("repo"):
                 result = builder.article(
                     title="Repository",
-                    description="Repository Ayiin - Userbot",
-                    url="https://t.me/AyiinXdSupport",
+                    description="Repository Bonten - Bonten",
+                    url="https://t.me/BontenXdSupport",
                     thumb=InputWebDocument(
                         INLINE_PIC,
                         0,
                         "image/jpeg",
                         []),
-                    text="**✧ 𝙰𝚈𝙸𝙸𝙽-𝚄𝚂𝙴𝚁𝙱𝙾𝚃 ✧**\n🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸\n✧ **𝙾𝚆𝙽𝙴𝚁 :** [𝙰𝚢𝚒𝚒𝚗𝚇𝚍](https://t.me/AyiinXd)\n✧ **𝚂𝚄𝙿𝙿𝙾𝚁𝚃 :** @AyiinXdSupport\n✧ **𝚁𝙴𝙿𝙾𝚂𝙸𝚃𝙾𝚁𝚈 :** [✧ 𝙰𝚈𝙸𝙸𝙽-𝚄𝚂𝙴𝚁𝙱𝙾𝚃 ✧](https://github.com/AyiinXd/Ayiin-Userbot)\n🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸",
+                    text="**✧ 𝙰𝚈𝙸𝙸𝙽-𝚄𝚂𝙴𝚁𝙱𝙾𝚃 ✧**\n🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸\n✧ **𝙾𝚆𝙽𝙴𝚁 :** [𝙰𝚢𝚒𝚒𝚗𝚇𝚍](https://t.me/BontenXd)\n✧ **𝚂𝚄𝙿𝙿𝙾𝚁𝚃 :** @BontenXdSupport\n✧ **𝚁𝙴𝙿𝙾𝚂𝙸𝚃𝙾𝚁𝚈 :** [✧ 𝙰𝚈𝙸𝙸𝙽-𝚄𝚂𝙴𝚁𝙱𝙾𝚃 ✧](https://github.com/BontenXd/Bonten-Bonten)\n🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸",
                     buttons=[
                         [
                             custom.Button.url(
                                 "ɢʀᴏᴜᴘ",
-                                "https://t.me/AyiinXdSupport"),
+                                "https://t.me/BontenXdSupport"),
                             custom.Button.url(
                                 "ʀᴇᴘᴏ",
-                                "https://github.com/AyiinXd/Ayiin-Userbot"),
+                                "https://github.com/BontenXd/Bonten-Bonten"),
                         ],
                     ],
                     link_preview=False,
@@ -584,29 +565,29 @@ with bot:
                 )
             else:
                 result = builder.article(
-                    title="᯽ Ayiin-Userbot ᯽",
-                    description="Ayiin - UserBot | Telethon",
-                    url="https://t.me/AyiinXdSupport",
+                    title="᯽ Bonten-Bonten ᯽",
+                    description="Bonten - Bonten | Telethon",
+                    url="https://t.me/BontenXdSupport",
                     thumb=InputWebDocument(
                         INLINE_PIC,
                         0,
                         "image/jpeg",
                         []),
-                    text=f"**𝙰𝚈𝙸𝙸𝙽 - 𝚄𝚂𝙴𝚁𝙱𝙾𝚃**\n🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸\n~ **𝚄𝚂𝙴𝚁𝙼𝙾𝙳𝙴 :** [{user.first_name}](tg://user?id={user.id})\n~ **𝙰𝚂𝚂𝙸𝚂𝚃𝙰𝙽𝚃 :** {tgbotusername}\n🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸\n**𝚂𝚄𝙿𝙿𝙾𝚁𝚃:** @AyiinXdSupport\n🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸",
+                    text=f"**𝙰𝚈𝙸𝙸𝙽 - 𝚄𝚂𝙴𝚁𝙱𝙾𝚃**\n🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸\n~ **𝚄𝚂𝙴𝚁𝙼𝙾𝙳𝙴 :** [{user.first_name}](tg://user?id={user.id})\n~ **𝙰𝚂𝚂𝙸𝚂𝚃𝙰𝙽𝚃 :** {tgbotusername}\n🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸\n**𝚂𝚄𝙿𝙿𝙾𝚁𝚃:** @BontenXdSupport\n🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸",
                     buttons=[
                         [
                             custom.Button.url(
                                 "ɢʀᴏᴜᴘ",
-                                "https://t.me/AyiinXdSupport"),
+                                "https://t.me/BontenXdSupport"),
                             custom.Button.url(
                                 "ʀᴇᴘᴏ",
-                                "https://github.com/AyiinXd/Ayiin-Userbot"),
+                                "https://github.com/BontenXd/Bonten-Bonten"),
                         ],
                     ],
                     link_preview=False,
                 )
             await event.answer(
-                [result], switch_pm="👥 USERBOT PORTAL", switch_pm_param="start"
+                [result], switch_pm="👥 Bonten PORTAL", switch_pm_param="start"
             )
 
         @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(rb"reopen")))
@@ -623,7 +604,7 @@ with bot:
                     link_preview=False,
                 )
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
+                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Bonten Milik {owner}"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
         @tgbot.on(
@@ -640,7 +621,7 @@ with bot:
                 await event.edit(buttons=buttons)
             else:
                 reply_pop_up_alert = (
-                    f"Kamu Tidak diizinkan, ini Userbot Milik {ALIVE_NAME}"
+                    f"Kamu Tidak diizinkan, ini Bonten Milik {ALIVE_NAME}"
                 )
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
@@ -653,7 +634,7 @@ with bot:
                     "😴 **𝙷𝙴𝙻𝙿 𝙼𝙾𝙳𝙴 𝙱𝚄𝚃𝚃𝙾𝙽 𝙳𝙸𝚃𝚄𝚃𝚄𝙿!** 😴", buttons=openlagi
                 )
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
+                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Bonten Milik {owner}"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
         @tgbot.on(
@@ -669,7 +650,7 @@ with bot:
                     current_page_number - 1, dugmeler, "helpme")
                 await event.edit(buttons=buttons)
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
+                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Bonten Milik {owner}"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
         @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"ub_modul_(.*)")))
@@ -700,7 +681,7 @@ with bot:
                     )
                 )
             else:
-                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Userbot Milik {owner}"
+                reply_pop_up_alert = f"Kamu Tidak diizinkan, ini Bonten Milik {owner}"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     except BaseException:
