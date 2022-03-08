@@ -1,29 +1,12 @@
-# Copyright (C) 2020 TeamDerUntergang.
-#
-# SedenUserBot is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# SedenUserBot is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-
-# @Qulec tarafından yazılmıştır.
-# Thanks @Spechide.
 
 from telethon.errors.rpcerrorlist import BotInlineDisabledError as noinline
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.contacts import UnblockRequest
 
-from userbot import BOT_USERNAME
-from userbot import CMD_HANDLER as cmd
-from userbot import bot
-from userbot.utils import edit_or_reply, ayiin_cmd
+from Bonten import BOT_USERNAME
+from Bonten import CMD_HANDLER as cmd
+from Bonten import bot
+from Bonten.utils import edit_or_reply, ayiin_cmd
 
 
 @ayiin_cmd(pattern="helpme")
