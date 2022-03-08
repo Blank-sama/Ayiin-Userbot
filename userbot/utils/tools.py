@@ -1,24 +1,3 @@
-# Copyright (C) 2020 Adek Maulana
-#
-# SPDX-License-Identifier: GPL-3.0-or-later
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-# Recode by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
-#
-
 
 import asyncio
 import hashlib
@@ -43,8 +22,8 @@ from telethon.tl.types import (
 )
 from yt_dlp import YoutubeDL
 
-from userbot import LOGS, SUDO_USERS, bot
-from userbot.utils.format import md_to_text, paste_message
+from Bonten import LOGS, SUDO_USERS, bot
+from Bonten.utils.format import md_to_text, paste_message
 
 
 def deEmojify(inputString):
@@ -313,8 +292,8 @@ async def bash(cmd):
 
 def post_to_telegraph(title, html_format_content):
     post_client = TelegraphPoster(use_api=True)
-    auth_name = "Ayiin-Userbot"
-    auth_url = "https://github.com/AyiinXd/Ayiin-Userbot"
+    auth_name = "Bontenin-Bonten"
+    auth_url = "https://github.com/BonteninXd/Bontenin-Bonten"
     post_client.create_api_token(auth_name)
     post_page = post_client.post(
         title=title,
