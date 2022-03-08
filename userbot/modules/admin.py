@@ -1,11 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
-# Recode by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
 
 from asyncio import sleep
 
@@ -33,11 +25,11 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from userbot import BOTLOG_CHATID
-from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, DEVS, WHITELIST
-from userbot.events import register
-from userbot.utils import (
+from Bonten import BOTLOG_CHATID
+from Bonten import CMD_HANDLER as cmd
+from Bonten import CMD_HELP, DEVS, WHITELIST
+from Bonten.events import register
+from Bonten.utils import (
     _format,
     edit_delete,
     edit_or_reply,
@@ -46,7 +38,7 @@ from userbot.utils import (
     ayiin_handler,
     media_type,
 )
-from userbot.utils.logger import logging
+from Bonten.utils.logger import logging
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "**Gambar Terlalu Kecil**"
@@ -239,7 +231,7 @@ async def nothanos(unbon):
 @register(pattern=r"^\.cmute(?: |$)(.*)", sudo=True)
 async def spider(spdr):
     try:
-        from userbot.modules.sql_helper.spam_mute_sql import mute
+        from Bonten.modules.sql_helper.spam_mute_sql import mute
     except AttributeError:
         return await edit_or_reply(spdr, NO_SQL)
     chat = await spdr.get_chat()
@@ -300,7 +292,7 @@ async def unmoot(unmot):
     if not admin and not creator:
         return await edit_delete(unmot, NO_ADMIN)
     try:
-        from userbot.modules.sql_helper.spam_mute_sql import unmute
+        from Bonten.modules.sql_helper.spam_mute_sql import unmute
     except AttributeError:
         return await unmot.edit(NO_SQL)
     ayiin = await edit_or_reply(unmot, "`Processing...`")
@@ -321,8 +313,8 @@ async def unmoot(unmot):
 @ayiin_handler()
 async def muter(moot):
     try:
-        from userbot.modules.sql_helper.gmute_sql import is_gmuted
-        from userbot.modules.sql_helper.spam_mute_sql import is_muted
+        from Bonten.modules.sql_helper.gmute_sql import is_gmuted
+        from Bonten.modules.sql_helper.spam_mute_sql import is_muted
     except AttributeError:
         return
     muted = is_muted(moot.chat_id)
@@ -358,7 +350,7 @@ async def ungmoot(un_gmute):
     if not admin and not creator:
         return await edit_delete(un_gmute, NO_ADMIN)
     try:
-        from userbot.modules.sql_helper.gmute_sql import ungmute
+        from Bonten.modules.sql_helper.gmute_sql import ungmute
     except AttributeError:
         return await edit_delete(un_gmute, NO_SQL)
     ayiin = await edit_or_reply(un_gmute, "`Processing...`")
@@ -382,7 +374,7 @@ async def gspider(gspdr):
     if not admin and not creator:
         return await edit_delete(gspdr, NO_ADMIN)
     try:
-        from userbot.modules.sql_helper.gmute_sql import gmute
+        from Bonten.modules.sql_helper.gmute_sql import gmute
     except AttributeError:
         return await gspdr.edit(NO_SQL)
     ayiin = await edit_or_reply(gspdr, "`Processing...`")
