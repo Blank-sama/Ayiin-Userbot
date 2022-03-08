@@ -10,7 +10,7 @@ from telethon.tl.types import InputPhoto
 
 from Bonten import CMD_HANDLER as cmd
 from Bonten import CMD_HELP, LOGS, STORAGE, SUDO_USERS
-from Bonten.utils import edit_or_reply, ayiin_cmd
+from Bonten.utils import edit_or_reply, bonten_cmd
 
 if not hasattr(STORAGE, "userObj"):
     STORAGE.userObj = False
