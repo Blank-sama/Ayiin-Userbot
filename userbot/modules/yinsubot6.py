@@ -2,15 +2,15 @@
 # ⚠️ Do not remove credits
 
 
-from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP
-from userbot.utils import ayiin_cmd
+from Bonten import CMD_HANDLER as cmd
+from Bonten import CMD_HELP
+from Bonten.utils import Bonten_cmd
 import random
-from userbot import owner
+from Bonten import owner
 from telethon.tl.types import InputMessagesFilterVideo
 
 
-@ayiin_cmd(pattern="bokp$")
+@Bonten_cmd(pattern="bokp$")
 async def _(event):
     try:
         asupannya = [
