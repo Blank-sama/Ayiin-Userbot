@@ -1,7 +1,7 @@
 """ Userbot module for other small commands. """
-from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP
-from userbot.utils import edit_or_reply, bonten_cmd
+from Bonten import CMD_HANDLER as cmd
+from Bonten import CMD_HELP
+from Bonten.utils import edit_or_reply, bonten_cmd
 
 
 @bonten_cmd(pattern="ihelp$")
