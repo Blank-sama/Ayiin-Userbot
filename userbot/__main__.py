@@ -1,15 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
-# Copyright (C) 2021 TeamUltroid for autobot
-# Recode by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
-#
-""" Userbot start point """
-
 
 import sys
 from importlib import import_module
@@ -22,11 +10,11 @@ from telethon.tl.functions.channels import InviteToChannelRequest
 from telethon import version
 
 
-from userbot import BOT_TOKEN, BOT_USERNAME, BOT_VER, BOTLOG_CHATID
-from userbot import CMD_HANDLER as cmd
-from userbot import DEVS, LOGS, blacklistayiin, bot, branch, call_py
-from userbot.modules import ALL_MODULES
-from userbot.utils import autobot, checking
+from buserot import BOT_TOKEN, BOT_USERNAME, BOT_VER, BOTLOG_CHATID
+from Bonten import CMD_HANDLER as cmd
+from Bonten import DEVS, LOGS, blacklistBonten, bot, branch, call_py
+from Bonten.modules import ALL_MODULES
+from Bonten.utils import autobot, checking
 
 try:
     bot.start()
@@ -34,17 +22,17 @@ try:
     user = bot.get_me()
     name = user.first_name
     uid = user.id
-    blacklistayiin = requests.get(
-        "https://raw.githubusercontent.com/AyiinXd/Reforestation/master/ayiinblacklist.json"
+    blacklistBonten = requests.get(
+        "https://raw.githubusercontent.com/BontenXd/Reforestation/master/Bontenblacklist.json"
     ).json()
-    if user.id in blacklistayiin:
+    if user.id in blacklistBonten:
         LOGS.warning(
-            "MAKANYA GA USAH BERTINGKAH GOBLOK, USERBOTnya GUA MATIIN NAJIS BANGET DIPAKE JAMET KEK LU.\nCredits: @mrismanaziz"
+            "MAKANYA GA USAH BERTINGKAH GOBLOK, Bontennya GUA MATIIN NAJIS BANGET DIPAKE JAMET KEK LU.\nCredits: @mrismanaziz"
         )
         sys.exit(1)
     if 1700405732 not in DEVS:
         LOGS.warning(
-            f"EOL\nAyiin-UserBot v{BOT_VER}, Copyright © 2021-2022 𝙰𝚈𝙸𝙸𝙽𝚇𝙳• <https://github.com/AyiinXd>"
+            f"EOL\nBonten-Bonten v{BOT_VER}, Copyright © 2021-2022 𝙰𝚈𝙸𝙸𝙽𝚇𝙳• <https://github.com/BontenXd>"
         )
         sys.exit(1)
 except Exception as e:
@@ -52,7 +40,7 @@ except Exception as e:
     sys.exit(1)
 
 for module_name in ALL_MODULES:
-    imported_module = import_module("userbot.modules." + module_name)
+    imported_module = import_module("Bonten.modules." + module_name)
     
 LOGS.info(f"Python Version - {python_version()}")
 LOGS.info(f"Telethon Version - {version.__version__}")
@@ -62,13 +50,13 @@ LOGS.info(
     f"STRING_SESSION detected!\n┌ First Name: {name}\n└ User ID: {uid}\n——"
 )
 
-LOGS.info(f"Ayiin-Userbot Version - {BOT_VER} [✧ 𝙰𝚈𝙸𝙸𝙽-𝚄𝚂𝙴𝚁𝙱𝙾𝚃 𝙳𝙸𝙰𝙺𝚃𝙸𝙵𝙺𝙰𝙽 ✧]")
+LOGS.info(f"Bonten-Bonten Version - {BOT_VER} [✧ 𝙰𝚈𝙸𝙸𝙽-𝚄𝚂𝙴𝚁𝙱𝙾𝚃 𝙳𝙸𝙰𝙺𝚃𝙸𝙵𝙺𝙰𝙽 ✧]")
 
 LOGS.info(
-    f"Jika {name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/AyiinXdSupport"
+    f"Jika {name} Membutuhkan Bantuan, Silahkan Tanyakan di Grup https://t.me/BontenXdSupport"
 )
 
-async def ayiin_userbot_on():
+async def Bonten_Bonten_on():
     try:
         if BOTLOG_CHATID != 0:
             await bot.send_message(
@@ -79,7 +67,7 @@ async def ayiin_userbot_on():
     except Exception as e:
         LOGS.info(str(e))
     try:
-        await bot(JoinChannelRequest("@AyiinXdSupport"))
+        await bot(JoinChannelRequest("@BontenXdSupport"))
     except BaseException:
         pass
     try:
@@ -89,7 +77,7 @@ async def ayiin_userbot_on():
 
 
 bot.loop.run_until_complete(checking())
-bot.loop.run_until_complete(ayiin_userbot_on())
+bot.loop.run_until_complete(Bonten_Bonten_on())
 if not BOT_TOKEN:
     bot.loop.run_until_complete(autobot())
 idle()
