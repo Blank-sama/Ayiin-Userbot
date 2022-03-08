@@ -1,10 +1,4 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.d (the "License");
-# you may not use this file except in compliance with the License.
-#
 
-""" Userbot module for System Stats commands """
 
 import asyncio
 import platform
@@ -21,10 +15,10 @@ import psutil
 from pytgcalls import __version__ as pytgcalls
 from telethon import __version__, version
 
-from userbot import ALIVE_EMOJI, ALIVE_LOGO, ALIVE_TEKS_CUSTOM, BOT_VER, CHANNEL
-from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, GROUP, StartTime
-from userbot.utils import bash, edit_or_reply, ayiin_cmd
+from Bonten import ALIVE_EMOJI, ALIVE_LOGO, ALIVE_TEKS_CUSTOM, BOT_VER, CHANNEL
+from Bonten import CMD_HANDLER as cmd
+from Bonten import CMD_HELP, GROUP, StartTime
+from Bonten.utils import bash, edit_or_reply, Bonten_cmd
 
 from .ping import get_readable_time
 
@@ -38,7 +32,7 @@ emoji = ALIVE_EMOJI
 alive_text = ALIVE_TEKS_CUSTOM
 
 
-@ayiin_cmd(
+@Bonten_cmd(
     pattern="sysinfo$",
 )
 async def _(e):
@@ -53,7 +47,7 @@ async def _(e):
     remove("neo.txt")
 
 
-@ayiin_cmd(pattern=r"spc")
+@Bonten_cmd(pattern=r"spc")
 async def psu(event):
     uname = platform.uname()
     softw = "**Informasi Sistem**\n"
@@ -111,7 +105,7 @@ def get_size(bytes, suffix="B"):
         bytes /= factor
 
 
-@ayiin_cmd(pattern="sysd$")
+@Bonten_cmd(pattern="sysd$")
 async def sysdetails(sysd):
     if not sysd.text[0].isalpha() and sysd.text[0] not in ("/", "#", "@", "!"):
         try:
@@ -131,7 +125,7 @@ async def sysdetails(sysd):
             await edit_or_reply(sysd, "**Install neofetch Terlebih dahulu!!**")
 
 
-@ayiin_cmd(pattern="botver$")
+@Bonten_cmd(pattern="botver$")
 async def bot_ver(event):
     if event.text[0].isalpha() or event.text[0] in ("/", "#", "@", "!"):
         return
@@ -160,7 +154,7 @@ async def bot_ver(event):
 
         await edit_or_reply(
             event,
-            "✧ **Userbot Versi :** " f"`{verout}`" "\n✧ **Revisi :** " f"`{revout}`",
+            "✧ **Bonten Versi :** " f"`{verout}`" "\n✧ **Revisi :** " f"`{revout}`",
         )
     else:
         await edit_or_reply(
@@ -168,14 +162,14 @@ async def bot_ver(event):
         )
 
 
-@ayiin_cmd(pattern="(?:alive|yinson)\\s?(.)?")
+@Bonten_cmd(pattern="(?:alive|yinson)\\s?(.)?")
 async def amireallyalive(alive):
     user = await alive.client.get_me()
     uptime = await get_readable_time((time.time() - StartTime))
     await alive.edit("😈")
     await asyncio.sleep(3)
     output = (
-        f"**[𝙰𝚈𝙸𝙸𝙽-𝚄𝚂𝙴𝚁𝙱𝙾𝚃](https://github.com/AyiinXd/Ayiin-Userbot)ㅤ𝚄𝙳𝙰𝙷 𝙰𝙺𝚃𝙸𝙵 𝚃𝙾𝙳.**\n\n"
+        f"**[𝙰𝚈𝙸𝙸𝙽-𝚄𝚂𝙴𝚁𝙱𝙾𝚃](https://github.com/BontenXd/Bonten-Bonten)ㅤ𝚄𝙳𝙰𝙷 𝙰𝙺𝚃𝙸𝙵 𝚃𝙾𝙳.**\n\n"
         f"**{alive_text}**\n\n"
         f"╭✠╼━━━━━━━━━━━━━━━✠╮\n"
         f"{emoji} **𝙼𝙰𝚂𝚃𝙴𝚁 :** [{user.first_name}](tg://user?id={user.id}) \n"
@@ -214,7 +208,7 @@ CMD_HELP.update(
         \n\n  •  **Syntax :** `{cmd}sysd`\
         \n  •  **Function : **Informasi sistem menggunakan neofetch.\
         \n\n\n  •  **Syntax :** `{cmd}botver`\
-        \n  •  **Function : **Menampilkan versi userbot.\
+        \n  •  **Function : **Menampilkan versi Bonten.\
         \n\n  •  **Syntax :** `{cmd}spc`\
         \n  •  **Function : **Menampilkan spesifikasi sistem secara lengkap.\
     "
