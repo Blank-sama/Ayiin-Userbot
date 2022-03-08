@@ -1,7 +1,3 @@
-# Credits: @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
-
 import asyncio
 import importlib
 import logging
@@ -12,7 +8,7 @@ from random import randint
 import heroku3
 from telethon.tl.functions.contacts import UnblockRequest
 
-from userbot import (
+from Bonten import (
     BOT_TOKEN,
     BOTLOG_CHATID,
     CMD_HELP,
@@ -92,7 +88,7 @@ async def autobot():
             await asyncio.sleep(1)
             await bot.send_message(bf, f"@{username}")
             await asyncio.sleep(1)
-            await bot.send_file(bf, "userbot/resources/logo.jpg")
+            await bot.send_file(bf, "Bonten/resources/logo.jpg")
             await asyncio.sleep(3)
             await bot.send_message(bf, "/setabouttext")
             await asyncio.sleep(1)
@@ -105,7 +101,7 @@ async def autobot():
             await bot.send_message(bf, f"@{username}")
             await asyncio.sleep(1)
             await bot.send_message(
-                bf, f"👑 Owner ~ {who.first_name} 🔥\n\n🔥 Powered By ~ @AyiinXd 🔥"
+                bf, f"👑 Owner ~ {who.first_name} 🔥\n\n🔥 Powered By ~ @BontenXd 🔥"
             )
             await bot.send_message(
                 BOTLOG_CHATID,
@@ -113,7 +109,7 @@ async def autobot():
             )
             await bot.send_message(
                 BOTLOG_CHATID,
-                "**SEDANG MERESTART USERBOT HARAP TUNGGU KONTOL.**",
+                "**SEDANG MERESTART Bonten HARAP TUNGGU KONTOL.**",
             )
             heroku_var["BOT_TOKEN"] = token
             heroku_var["BOT_USERNAME"] = f"@{username}"
@@ -134,7 +130,7 @@ async def autobot():
         await asyncio.sleep(1)
         await bot.send_message(bf, f"@{username}")
         await asyncio.sleep(1)
-        await bot.send_file(bf, "userbot/resources/logo.jpg")
+        await bot.send_file(bf, "Bonten/resources/logo.jpg")
         await asyncio.sleep(3)
         await bot.send_message(bf, "/setabouttext")
         await asyncio.sleep(1)
@@ -147,7 +143,7 @@ async def autobot():
         await bot.send_message(bf, f"@{username}")
         await asyncio.sleep(1)
         await bot.send_message(
-            bf, f"👑 Owner ~ {who.first_name} 🔥\n\n🔥 Powered By ~ @AyiinXd 🔥"
+            bf, f"👑 Owner ~ {who.first_name} 🔥\n\n🔥 Powered By ~ @BontenXd 🔥"
         )
         await bot.send_message(
             BOTLOG_CHATID,
@@ -155,7 +151,7 @@ async def autobot():
         )
         await bot.send_message(
             BOTLOG_CHATID,
-            "**SEDANG MERESTART USERBOT HARAP TUNGGU KONTOL.**",
+            "**SEDANG MERESTART Bonten HARAP TUNGGU KONTOL.**",
         )
         heroku_var["BOT_TOKEN"] = token
         heroku_var["BOT_USERNAME"] = f"@{username}"
@@ -170,16 +166,16 @@ def load_module(shortname):
     if shortname.startswith("__"):
         pass
     elif shortname.endswith("_"):
-        path = Path(f"userbot/modules/{shortname}.py")
-        name = "userbot.modules.{}".format(shortname)
+        path = Path(f"Bonten/modules/{shortname}.py")
+        name = "Bonten.modules.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
         LOGS.info("Successfully imported " + shortname)
     else:
 
-        path = Path(f"userbot/modules/{shortname}.py")
-        name = "userbot.modules.{}".format(shortname)
+        path = Path(f"Bonten/modules/{shortname}.py")
+        name = "Bonten.modules.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         mod.bot = bot
@@ -188,7 +184,7 @@ def load_module(shortname):
         mod.logger = logging.getLogger(shortname)
         spec.loader.exec_module(mod)
         # for imports
-        sys.modules["userbot.modules." + shortname] = mod
+        sys.modules["Bonten.modules." + shortname] = mod
         LOGS.info("Successfully imported " + shortname)
 
 
@@ -196,21 +192,21 @@ def start_assistant(shortname):
     if shortname.startswith("__"):
         pass
     elif shortname.endswith("_"):
-        path = Path(f"userbot/modules/assistant/{shortname}.py")
-        name = "userbot.modules.assistant.{}".format(shortname)
+        path = Path(f"Bonten/modules/assistant/{shortname}.py")
+        name = "Bonten.modules.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
         LOGS.info("Starting Your Assistant Bot.")
         LOGS.info("Assistant Sucessfully imported " + shortname)
     else:
-        path = Path(f"userbot/modules/assistant/{shortname}.py")
-        name = "userbot.modules.assistant.{}".format(shortname)
+        path = Path(f"Bonten/modules/assistant/{shortname}.py")
+        name = "Bonten.modules.assistant.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
         mod = importlib.util.module_from_spec(spec)
         mod.tgbot = bot.tgbot
         spec.loader.exec_module(mod)
-        sys.modules["userbot.modules.assistant" + shortname] = mod
+        sys.modules["Bonten.modules.assistant" + shortname] = mod
         LOGS.info("Assistant Successfully imported" + shortname)
 
 
@@ -222,7 +218,7 @@ def remove_plugin(shortname):
             del CMD_HELP[shortname]
 
         except BaseException:
-            name = f"userbot.modules.{shortname}"
+            name = f"Bonten.modules.{shortname}"
 
             for i in reversed(range(len(bot._event_builders))):
                 ev, cb = bot._event_builders[i]
