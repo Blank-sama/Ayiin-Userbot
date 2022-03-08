@@ -1,15 +1,7 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.d (the "License");
-# you may not use this file except in compliance with the License.
-#
-# Recode by @mrismanaziz
-# FROM Man-Userbot <https://github.com/mrismanaziz/Man-Userbot>
-# t.me/SharingUserbot & t.me/Lunatic0de
 
 import sys
 
-from userbot import LOAD, LOGS, NO_LOAD
+from Bonten import LOAD, LOGS, NO_LOAD
 
 
 def __list_all_modules():
