@@ -1,12 +1,3 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
-# The entire source code is OSSRPL except 'whois' which is MPL
-# License: MPL and OSSRPL
-""" Userbot module for getting info about any user on Telegram(including you!). """
-
 import os
 
 from telethon.tl.functions.photos import GetUserPhotosRequest
@@ -14,12 +5,12 @@ from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
 
-from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
-from userbot.utils import edit_or_reply, ayiin_cmd
+from Bonten import CMD_HANDLER as cmd
+from Bonten import CMD_HELP, TEMP_DOWNLOAD_DIRECTORY
+from Bonten.utils import edit_or_reply, Bonten_cmd
 
 
-@ayiin_cmd(pattern="whois(?: |$)(.*)")
+@Bonten_cmd(pattern="whois(?: |$)(.*)")
 async def who(event):
     xx = await edit_or_reply(event, "`Mengambil Informasi Pengguna Ini...`")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
