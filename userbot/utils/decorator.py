@@ -9,7 +9,7 @@ from pathlib import Path
 
 from telethon import events
 
-from userbot import (
+from Bonten import (
     BL_CHAT,
     CMD_HANDLER,
     CMD_LIST,
@@ -21,7 +21,7 @@ from userbot import (
 )
 
 
-def ayiin_cmd(
+def bonten_cmd(
     pattern: str = None,
     allow_sudo: bool = True,
     disable_edited: bool = False,
@@ -44,21 +44,21 @@ def ayiin_cmd(
         args["chats"] = black_list_chats
 
     if pattern is not None:
-        global ayiin_reg
+        global bonten_reg
         global sudo_reg
         if (
             pattern.startswith(r"\#")
             or not pattern.startswith(r"\#")
             and pattern.startswith(r"^")
         ):
-            ayiin_reg = sudo_reg = re.compile(pattern)
+            bonten_reg = sudo_reg = re.compile(pattern)
         else:
-            ayiin_ = "\\" + CMD_HANDLER
+            bonten_ = "\\" + CMD_HANDLER
             sudo_ = "\\" + SUDO_HANDLER
-            ayiin_reg = re.compile(ayiin_ + pattern)
+            bonten_reg = re.compile(ayiin_ + pattern)
             sudo_reg = re.compile(sudo_ + pattern)
             if command is not None:
-                cmd1 = ayiin_ + command
+                cmd1 = bonten_ + command
                 cmd2 = sudo_ + command
             else:
                 cmd1 = (
@@ -112,7 +112,7 @@ def ayiin_cmd(
     return decorator
 
 
-def ayiin_handler(
+def bonten_handler(
     **args,
 ):
     def decorator(func):
