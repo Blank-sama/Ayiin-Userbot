@@ -1,10 +1,10 @@
 """ Userbot module for other small commands. """
 from userbot import CMD_HANDLER as cmd
 from userbot import CMD_HELP
-from userbot.utils import edit_or_reply, ayiin_cmd
+from userbot.utils import edit_or_reply, bonten_cmd
 
 
-@ayiin_cmd(pattern="ihelp$")
+@bonten_cmd(pattern="ihelp$")
 async def usit(event):
     me = await event.client.get_me()
     await edit_or_reply(
@@ -17,7 +17,7 @@ async def usit(event):
     )
 
 
-@ayiin_cmd(pattern="listvar$")
+@bonten_cmd(pattern="listvar$")
 async def var(event):
     await edit_or_reply(
         event,
