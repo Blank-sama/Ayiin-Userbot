@@ -2,8 +2,8 @@
 
 from sqlalchemy.exc import IntegrityError
 
-from userbot import CMD_HELP, bot
-from userbot.events import ayiin_cmd
+from Bonten import CMD_HELP, bot
+from Bonten.events import ayiin_cmd
 
 fban_replies = [
     "New FedBan",
