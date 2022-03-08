@@ -5,12 +5,12 @@ import asyncio
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, DEVS
-from userbot.utils import edit_or_reply, ayiin_cmd
+from Bonten import CMD_HANDLER as cmd
+from Bonten import CMD_HELP, DEVS
+from Bonten.utils import edit_or_reply, Bonten_cmd
 
 
-@ayiin_cmd(pattern="fgban(?: |$)(.*)")
+@Bonten_cmd(pattern="fgban(?: |$)(.*)")
 async def gbun(event):
     if event.fwd_from:
         return
