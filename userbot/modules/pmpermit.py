@@ -1,11 +1,4 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-#
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-#
-# Recode by @mrismanaziz
-# @SharingUserbot
-""" Userbot module for keeping control who PM you. """
+
 
 from sqlalchemy.exc import IntegrityError
 from telethon import events
@@ -13,11 +6,11 @@ from telethon.tl.functions.contacts import BlockRequest, UnblockRequest
 from telethon.tl.functions.messages import ReportSpamRequest
 from telethon.tl.types import User
 
-from userbot import BOTLOG_CHATID
-from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, COUNT_PM, LASTMSG, LOGS, PM_AUTO_BAN, PM_LIMIT, bot
-from userbot.events import ayiin_cmd
-from userbot.utils import edit_delete, edit_or_reply
+from Bonten import BOTLOG_CHATID
+from Bonten import CMD_HANDLER as cmd
+from Bonten import CMD_HELP, COUNT_PM, LASTMSG, LOGS, PM_AUTO_BAN, PM_LIMIT, bot
+from Bonten.events import ayiin_cmd
+from Bonten.utils import edit_delete, edit_or_reply
 
 DEF_UNAPPROVED_MSG = (
     "╔═════════════════════╗\n"
@@ -49,8 +42,8 @@ async def permitpm(event):
         and not sender.contact
     ):
         try:
-            from userbot.modules.sql_helper.globals import gvarstatus
-            from userbot.modules.sql_helper.pm_permit_sql import is_approved
+            from Bonten.modules.sql_helper.globals import gvarstatus
+            from Bonten.modules.sql_helper.pm_permit_sql import is_approved
         except AttributeError:
             return
         apprv = is_approved(event.chat_id)
@@ -131,8 +124,8 @@ async def auto_accept(event):
         and not sender.contact
     ):
         try:
-            from userbot.modules.sql_helper.globals import gvarstatus
-            from userbot.modules.sql_helper.pm_permit_sql import approve, is_approved
+            from Bonten.modules.sql_helper.globals import gvarstatus
+            from Bonten.modules.sql_helper.pm_permit_sql import approve, is_approved
         except AttributeError:
             return
 
@@ -168,7 +161,7 @@ async def auto_accept(event):
 async def notifoff(noff_event):
     """For .notifoff command, stop getting notifications from unapproved PMs."""
     try:
-        from userbot.modules.sql_helper.globals import addgvar
+        from Bonten.modules.sql_helper.globals import addgvar
     except AttributeError:
         return await noff_event.edit("`Running on Non-SQL mode!`")
     addgvar("NOTIF_OFF", True)
@@ -181,7 +174,7 @@ async def notifoff(noff_event):
 async def notifon(non_event):
     """For .notifoff command, get notifications from unapproved PMs."""
     try:
-        from userbot.modules.sql_helper.globals import delgvar
+        from Bonten.modules.sql_helper.globals import delgvar
     except AttributeError:
         return await non_event.edit("`Running on Non-SQL mode!`")
     delgvar("NOTIF_OFF")
@@ -194,8 +187,8 @@ async def notifon(non_event):
 async def approvepm(apprvpm):
     """For $ok command, give someone the permissions to PM you."""
     try:
-        from userbot.modules.sql_helper.globals import gvarstatus
-        from userbot.modules.sql_helper.pm_permit_sql import approve
+        from Bonten.modules.sql_helper.globals import gvarstatus
+        from Bonten.modules.sql_helper.pm_permit_sql import approve
     except AttributeError:
         return await edit_delete(apprvpm, "`Running on Non-SQL mode!`")
 
@@ -256,7 +249,7 @@ async def approvepm(apprvpm):
 @bot.on(ayiin_cmd(outgoing=True, pattern=r"(?:tolak|nopm)\s?(.)?"))
 async def disapprovepm(disapprvpm):
     try:
-        from userbot.modules.sql_helper.pm_permit_sql import dissprove
+        from Bonten.modules.sql_helper.pm_permit_sql import dissprove
     except BaseException:
         return await edit_delete(disapprvpm, "`Running on Non-SQL mode!`")
 
@@ -326,7 +319,7 @@ async def blockpm(block):
         uid = block.chat_id
 
     try:
-        from userbot.modules.sql_helper.pm_permit_sql import dissprove
+        from Bonten.modules.sql_helper.pm_permit_sql import dissprove
 
         dissprove(uid)
     except AttributeError:
@@ -351,7 +344,7 @@ async def add_pmsg(cust_msg):
             "**Anda Harus Menyetel Var** `PM_AUTO_BAN` **Ke** `True`\n\n**Bila ingin Mengaktifkan PMPERMIT Silahkan Ketik:** `$set var PM_AUTO_BAN True`"
         )
     try:
-        import userbot.modules.sql_helper.globals as sql
+        import Bonten.modules.sql_helper.globals as sql
     except AttributeError:
         await cust_msg.edit("**Running on Non-SQL mode!**")
         return
