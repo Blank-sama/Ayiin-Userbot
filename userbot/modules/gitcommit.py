@@ -12,14 +12,14 @@ from github import Github
 
 # from sample_config import Config
 # from uniborg.util import admin_cmd, humanbytes, progress, time_formatter
-# from userbot.events import humanbytes, progress, time_formatter
-from userbot import CMD_HELP, GIT_REPO_NAME, GITHUB_ACCESS_TOKEN, bot
-from userbot.utils import ayiin_cmd
+# from Bonten.events import humanbytes, progress, time_formatter
+from Bonten import CMD_HELP, GIT_REPO_NAME, GITHUB_ACCESS_TOKEN, bot
+from Bonten.utils import bonten_cmd
 
 GIT_TEMP_DIR = "./userbot/temp/"
 
 
-@ayiin_cmd(pattern="gcommit(?: |$)(.*)")
+@bonten_cmd(pattern="gcommit(?: |$)(.*)")
 async def download(event):
     if event.fwd_from:
         return
