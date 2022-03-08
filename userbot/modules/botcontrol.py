@@ -17,7 +17,7 @@ from telethon.tl import types
 from telethon.tl.types import MessageMediaWebPage
 from telethon.utils import get_display_name, pack_bot_file_id
 
-from userbot import (
+from Bonten import (
     BOT_USERNAME,
     BOTLOG_CHATID,
     CHANNEL,
@@ -30,14 +30,14 @@ from userbot import (
     tgbot,
     user,
 )
-from userbot.modules.sql_helper.bot_blacklists import check_is_black_list
-from userbot.modules.sql_helper.bot_starters import (
+from Bonten.modules.sql_helper.bot_blacklists import check_is_black_list
+from Bonten.modules.sql_helper.bot_starters import (
     add_starter_to_db,
     get_all_starters,
     get_starter_details,
 )
-from userbot.modules.sql_helper.globals import gvarstatus
-from userbot.utils import _format, asst_cmd, callback, reply_id
+from Bonten.modules.sql_helper.globals import gvarstatus
+from Bonten.utils import _format, asst_cmd, callback, reply_id
 
 from .ping import get_readable_time
 
