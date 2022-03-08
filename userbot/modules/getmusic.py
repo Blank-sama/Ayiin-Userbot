@@ -15,16 +15,16 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import DocumentAttributeAudio, DocumentAttributeVideo
 
-from userbot import CMD_HANDLER as cmd
-from userbot import (
+from Bonten import CMD_HANDLER as cmd
+from Bonten import (
     CMD_HELP,
     DEEZER_ARL_TOKEN,
     LASTFM_USERNAME,
     TEMP_DOWNLOAD_DIRECTORY,
     lastfm,
 )
-from userbot.utils import bash, chrome, edit_or_reply, ayiin_cmd, progress
-from userbot.utils.FastTelethon import upload_file
+from Bonten.utils import bash, chrome, edit_or_reply, ayiin_cmd, progress
+from Bonten.utils.FastTelethon import upload_file
 
 
 async def getmusic(cat):
@@ -57,7 +57,7 @@ async def getmusicvideo(cat):
     await bash(command)
 
 
-@ayiin_cmd(pattern="song (.*)")
+@bonten_cmd(pattern="song (.*)")
 async def _(event):
     reply = await event.get_reply_message()
     if event.pattern_match.group(1):
@@ -92,7 +92,7 @@ async def _(event):
     await bash("rm -rf *.mp3")
 
 
-@ayiin_cmd(pattern="vsong(?: |$)(.*)")
+@bonten_cmd(pattern="vsong(?: |$)(.*)")
 async def _(event):
     reply = await event.get_reply_message()
     if event.pattern_match.group(1):
@@ -160,7 +160,7 @@ async def _(event):
         return
 
 
-@ayiin_cmd(pattern="smd (?:(now)|(.*) - (.*))")
+@bonten_cmd(pattern="smd (?:(now)|(.*) - (.*))")
 async def _(event):
     if event.fwd_from:
         return
@@ -207,7 +207,7 @@ async def _(event):
         )
 
 
-@ayiin_cmd(pattern="net (?:(now)|(.*) - (.*))")
+@bonten_cmd(pattern="net (?:(now)|(.*) - (.*))")
 async def _(event):
     if event.fwd_from:
         return
@@ -251,7 +251,7 @@ async def _(event):
         )
 
 
-@ayiin_cmd(pattern="mhb(?: |$)(.*)")
+@bonten_cmd(pattern="mhb(?: |$)(.*)")
 async def _(event):
     if event.fwd_from:
         return
@@ -284,7 +284,7 @@ async def _(event):
         )
 
 
-@ayiin_cmd(pattern="deez (.+?|) (FLAC|MP3\\_320|MP3\\_256|MP3\\_128)")
+@bonten_cmd(pattern="deez (.+?|) (FLAC|MP3\\_320|MP3\\_256|MP3\\_128)")
 async def _(event):
     """DeezLoader by @An0nimia. Ported for UniBorg by @SpEcHlDe"""
     if event.fwd_from:
