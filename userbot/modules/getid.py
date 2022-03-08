@@ -1,14 +1,14 @@
 from telethon.utils import pack_bot_file_id
 
-from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP, LOGS
-from userbot.utils import edit_delete, edit_or_reply, ayiin_cmd
-from userbot.utils.logger import logging
+from Bonten import CMD_HANDLER as cmd
+from Bonten import CMD_HELP, LOGS
+from Bonten.utils import edit_delete, edit_or_reply, bonten_cmd
+from Bonten.utils.logger import logging
 
 LOGS = logging.getLogger(__name__)
 
 
-@ayiin_cmd(pattern="(get_id|id)(?:\\s|$)([\\s\\S]*)")
+@bonten_cmd(pattern="(get_id|id)(?:\\s|$)([\\s\\S]*)")
 async def _(event):
     input_str = event.pattern_match.group(2)
     if input_str:
