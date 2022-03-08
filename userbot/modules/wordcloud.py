@@ -1,10 +1,3 @@
-# Copyright (C) 2020 Alfiananda P.A
-#
-# Licensed under the General Public License, Version 3.0;
-# you may not use this file except in compliance with the License.
-#
-
-
 import numpy as np
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
@@ -13,12 +6,12 @@ from scipy.ndimage import gaussian_gradient_magnitude
 from telethon.tl.types import DocumentAttributeFilename
 from wordcloud import ImageColorGenerator, WordCloud
 
-from userbot import CMD_HANDLER as cmd
-from userbot import CMD_HELP
-from userbot.utils import bash, edit_delete, edit_or_reply, ayiin_cmd
+from Bonten import CMD_HANDLER as cmd
+from Bonten import CMD_HELP
+from Bonten.utils import bash, edit_delete, edit_or_reply, Bonetn_cmd
 
 
-@ayiin_cmd(pattern="(wc)$")
+@Bonten_cmd(pattern="(wc)$")
 async def _(event):
     if not event.reply_to_msg_id:
         await edit_delete(event, "`Mohon Balas Ke Media Apapun`")
